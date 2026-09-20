@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-╔══════════════════════════════════════════════════════════════════════════════╗
-║  STAT GEOM QC - Moteur d'analyse (API native QGIS)                            ║
-║                                                                                ║
-║  Portage de GISAnalysisEngine (App_Stat_GEOM) vers l'API PyQGIS, sans         ║
+╔══════════════════════════════════════════════════════════════════════╗
+║  STAT GEOM QC - Moteur d'analyse (API native QGIS)                 ║
+║                                                                    ║
+║  Portage de GISAnalysisEngine (App_Stat_GEOM) vers l'API PyQGIS, sans ║
 ║  dépendance à geopandas / matplotlib. Fonctionne directement sur les couches  ║
-║  vectorielles chargées dans QGIS.                                             ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+║  vectorielles chargées dans QGIS.                                     ║
+╚══════════════════════════════════════════════════════════════════════╝
 """
 
 import hashlib
@@ -27,9 +27,9 @@ from qgis.core import (
 )
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════════
 # OPTIONS & RÉSULTATS
-# ═══════════════════════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════════
 
 
 @dataclass
@@ -150,12 +150,19 @@ class AnalysisResult:
 
     def total_issues(self) -> int:
         q = self.quality_report
+        agl_count = (
+            self.buildings_agl_over_amsl
+            if isinstance(self.buildings_agl_over_amsl, int)
+            else 0
+        )
         return (
             q.null_empty_count
             + q.invalid_count
+            + q.self_intersection_count
             + q.small_area_count
             + q.duplicate_count
             + q.overlap_count
+            + agl_count
         )
 
     def to_dict(self) -> Dict[str, Any]:
@@ -207,9 +214,9 @@ class AnalysisCancelled(Exception):
     """Levée lorsque l'utilisateur annule l'analyse."""
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════════
 # SCORE DE CORRECTNESS
-# ═══════════════════════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════════
 
 # Pondérations des pénalités (proportion d'entités concernées -> pénalité).
 # Les problèmes critiques (géométries nulles/vides/invalides) pèsent le plus.
@@ -280,9 +287,9 @@ def compute_correctness(result: AnalysisResult, include_buildings: bool) -> Corr
     )
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════════
 # MOTEUR D'ANALYSE
-# ═══════════════════════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════════
 
 
 class GeomAnalyzer:
@@ -896,9 +903,9 @@ class GeomAnalyzer:
         return fixes
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════════
 # UTILITAIRES
-# ═══════════════════════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════════
 
 
 def _now_iso() -> str:
