@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+  <!-- Coche des cases a cocher de STAT GEOM QC. Trace arrondi, epais,
+       inscrit dans le carre de 14 px du sous-controle ::indicator. -->
+  <path d="M2.7 7.5 L5.6 10.4 L11.3 4.0" fill="none" stroke="#0f8a67"
+        stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+        stroke-opacity="0.4"/>
+</svg>

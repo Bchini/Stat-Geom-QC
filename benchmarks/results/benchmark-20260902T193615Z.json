@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-02T19:36:15.527351+00:00",
+  "method": "warm-up plus repeated in-process GeomAnalyzer runs",
+  "timed_scope": "analysis only; excludes load, generation and exports",
+  "environment": {
+    "plugin_version": "2.9.36",
+    "qgis_version": "3.40.5-Bratislava",
+    "python_version": "3.12.9",
+    "geos_version": "3.13.1-CAPI-1.19.2",
+    "gdal_version": "3.10.2",
+    "proj_version": "9.6",
+    "os": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel",
+    "logical_cores": 8,
+    "system_memory_gb": 15.7
+  },
+  "configuration": {
+    "profile": "standard",
+    "repeats": 3,
+    "scenario": "both",
+    "sizes": [
+      1000,
+      10000,
+      50000
+    ],
+    "issue_every": 500,
+    "input_file": null
+  },
+  "results": [
+    {
+      "dataset": "synthetic-clean-1000",
+      "scenario": "clean",
+      "features": 1000,
+      "profile": "standard",
+      "issue_every": null,
+      "expected_overlap_pairs": 0,
+      "repetitions_seconds": [
+        0.046279,
+        0.043255,
+        0.039749
+      ],
+      "median_seconds": 0.043255,
+      "min_seconds": 0.039749,
+      "max_seconds": 0.046279,
+      "features_per_second": 23118.7,
+      "score": 100.0,
+      "coverage_pct": 70.0,
+      "total_issues": 0,
+      "invalid": 0,
+      "null_empty": 0,
+      "overlap_features": 0,
+      "overlap_pairs": 0,
+      "duplicates": 0,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "dataset": "synthetic-controlled-overlap-1000",
+      "scenario": "controlled-overlap",
+      "features": 1000,
+      "profile": "standard",
+      "issue_every": 500,
+      "expected_overlap_pairs": 1,
+      "repetitions_seconds": [
+        0.04576,
+        0.042403,
+        0.040842
+      ],
+      "median_seconds": 0.042403,
+      "min_seconds": 0.040842,
+      "max_seconds": 0.04576,
+      "features_per_second": 23583.2,
+      "score": 99.9,
+      "coverage_pct": 70.0,
+      "total_issues": 2,
+      "invalid": 0,
+      "null_empty": 0,
+      "overlap_features": 2,
+      "overlap_pairs": 1,
+      "duplicates": 0,
+      "warnings": [
+        "2 entités en chevauchement (1 paires en intersection)."
+      ],
+      "errors": []
+    },
+    {
+      "dataset": "synthetic-clean-10000",
+      "scenario": "clean",
+      "features": 10000,
+      "profile": "standard",
+      "issue_every": null,
+      "expected_overlap_pairs": 0,
+      "repetitions_seconds": [
+        0.589993,
+        0.525078,
+        0.514924
+      ],
+      "median_seconds": 0.525078,
+      "min_seconds": 0.514924,
+      "max_seconds": 0.589993,
+      "features_per_second": 19044.8,
+      "score": 100.0,
+      "coverage_pct": 70.0,
+      "total_issues": 0,
+      "invalid": 0,
+      "null_empty": 0,
+      "overlap_features": 0,
+      "overlap_pairs": 0,
+      "duplicates": 0,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "dataset": "synthetic-controlled-overlap-10000",
+      "scenario": "controlled-overlap",
+      "features": 10000,
+      "profile": "standard",
+      "issue_every": 500,
+      "expected_overlap_pairs": 19,
+      "repetitions_seconds": [
+        0.548235,
+        0.496555,
+        0.492341
+      ],
+      "median_seconds": 0.496555,
+      "min_seconds": 0.492341,
+      "max_seconds": 0.548235,
+      "features_per_second": 20138.8,
+      "score": 99.7,
+      "coverage_pct": 70.0,
+      "total_issues": 38,
+      "invalid": 0,
+      "null_empty": 0,
+      "overlap_features": 38,
+      "overlap_pairs": 19,
+      "duplicates": 0,
+      "warnings": [
+        "38 entités en chevauchement (19 paires en intersection)."
+      ],
+      "errors": []
+    },
+    {
+      "dataset": "synthetic-clean-50000",
+      "scenario": "clean",
+      "features": 50000,
+      "profile": "standard",
+      "issue_every": null,
+      "expected_overlap_pairs": 0,
+      "repetitions_seconds": [
+        3.076181,
+        2.813249,
+        2.861949
+      ],
+      "median_seconds": 2.861949,
+      "min_seconds": 2.813249,
+      "max_seconds": 3.076181,
+      "features_per_second": 17470.6,
+      "score": 100.0,
+      "coverage_pct": 70.0,
+      "total_issues": 0,
+      "invalid": 0,
+      "null_empty": 0,
+      "overlap_features": 0,
+      "overlap_pairs": 0,
+      "duplicates": 0,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "dataset": "synthetic-controlled-overlap-50000",
+      "scenario": "controlled-overlap",
+      "features": 50000,
+      "profile": "standard",
+      "issue_every": 500,
+      "expected_overlap_pairs": 99,
+      "repetitions_seconds": [
+        3.059418,
+        2.946751,
+        2.890471
+      ],
+      "median_seconds": 2.946751,
+      "min_seconds": 2.890471,
+      "max_seconds": 3.059418,
+      "features_per_second": 16967.8,
+      "score": 99.7,
+      "coverage_pct": 70.0,
+      "total_issues": 198,
+      "invalid": 0,
+      "null_empty": 0,
+      "overlap_features": 198,
+      "overlap_pairs": 99,
+      "duplicates": 0,
+      "warnings": [
+        "198 entités en chevauchement (99 paires en intersection)."
+      ],
+      "errors": []
+    }
+  ]
+}

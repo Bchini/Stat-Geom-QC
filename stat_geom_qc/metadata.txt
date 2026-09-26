@@ -3,26 +3,20 @@ name=STAT GEOM QC
 qgisMinimumVersion=3.16
 qgisMaximumVersion=3.99
 description=Quality control and geometric statistics for vector layers, with a correctness score and exportable report.
-about=STAT GEOM QC analyses QGIS vector layers and detects quality issues: null or empty geometries, invalid geometries, self-intersections, overlaps/intersections between polygons, duplicates, small polygons (configurable m² threshold) and building inconsistencies (AGL > AMSL). It computes a weighted correctness score (0-100), shows a modern summary (gauge, indicators, breakdown) and produces an exportable report (HTML/CSV/JSON). Built-in QGIS actions: select flagged features, create an error layer, and selective geometry repair (checkboxes) that writes the result to a NEW file without modifying the source layer. Native PyQGIS port of the STAT GEOM application, with no external dependencies.
-version=2.8.3
-author=Adel Bchini
+about=STAT GEOM QC checks the geometric quality of QGIS vector layers and rates it with a weighted correctness score (0-100), a visual summary and an exportable report (browser view, HTML file, PDF file). It detects null or empty geometries, invalid geometries and self-intersections, strictly topological overlaps between polygons (no metric tolerance, so a shared boundary is never reported), duplicates, small polygons, duplicate vertices, holes, multipart features and the height of nested polygons, plus three optional Extras: sharp angles, vertices too close together, and unnoded crossings between line features. A check that did not run, or that ran without being able to conclude, is labelled as such and left out of the score - never reported as a misleading zero. Built-in actions select the flagged features, build a point layer locating each anomaly, and offer a selective repair that writes a NEW file without ever modifying the source, with a per-correction preview computed on your own data beforehand and no partial output ever written. An optional analysis zone - a rectangle drawn on the map, or the current map extent - restricts everything to one tile at a time, in the panel as in the Processing algorithms; native PyQGIS, with no external dependencies.
+version=2.9.52
+author=Adel.bchini@gmail.com
 email=adel.bchini@gmail.com
-tags=quality,quality control,qc,geometry,validation,topology,statistics,vector,correctness,buildings,duplicates,overlaps,intersection
+tags=quality,quality control,qc,geometry,validation,topology,statistics,vector,correctness,duplicates,overlaps,intersection,vertex,holes,multipart
 category=Vector
 icon=icon.svg
+hasProcessingProvider=yes
 experimental=False
 deprecated=False
 homepage=https://github.com/Bchini/stat-geom-qc
 tracker=https://github.com/Bchini/stat-geom-qc/issues
 repository=https://github.com/Bchini/stat-geom-qc
-changelog=2.8.3 - Clean security scan: normalize file permissions to 0644 in the package and add nosec annotations to two defensive try/except blocks in the overlap-repair code.
-    2.8.2 - Add the required LICENSE file (GNU GPL v2) inside the plugin package.
-    2.8.1 - Fix metadata.txt parsing error on plugins.qgis.org caused by a reserved percent sign in the changelog; rephrased to remove it.
-    2.8.0 - Metadata description and about translated to English for the QGIS plugin repository.
-    2.7.0 - Le contrôle bâtiments (AGL vs AMSL) est désormais DÉSACTIVÉ par défaut (à activer manuellement au besoin).
-    2.6.0 - Métadonnées de publication : liens homepage / repository / tracker renseignés (dépôt GitHub public) pour l'upload sur plugins.qgis.org.
-    2.5.0 - Auto-correction PRUDENTE des chevauchements : seuls les recouvrements mineurs (surface rognée sous un seuil réglable) sont corrigés en rognant le plus petit polygone ; le plus grand garde sa forme. Les cas importants sont laissés à l'opérateur, avec la liste des FID à revoir.
-    2.4.0 - Projet personnel : retrait de toute référence à un tiers (nom et email de contact mis à jour). Durcissement sécurité (hachage BLAKE2b pour les doublons, nettoyage des imports inutilisés).
-    2.3.0 - L'auto-intersection devient une catégorie de problème à part entière : entités traçées (FID), sélectionnables, exportables dans la couche d'erreurs et réparables via une case à cocher dédiée (make valid). Détection d'invalidité renforcée (balayage de toutes les erreurs de validation).
-    2.2.0 - Réparation géométrique sélective par cases à cocher (invalides / nulles-vides / doublons / petits polygones) écrite dans un NOUVEAU fichier sans modifier l'original. Le score ne peut plus valoir 100/100 s'il subsiste des anomalies. Auteur mis à jour (Adel Bchini).
-    2.1.0 - Détection des chevauchements, doublons, petits polygones, contrôle bâtiments AGL/AMSL, score de correctness et rapports HTML/CSV/JSON.
+changelog=2.9.52
+    - Correction de l'export PDF qui echouait sous certaines installations de QGIS avec : setPageSize(...): argument 1 has unexpected type 'QPageSize'.
+    - Cause : selon la compilation de PyQt5, QPdfWriter n'accepte qu'une des deux formes de setPageSize. La page est desormais configuree par setPageLayout, disponible partout, avec deux replis.
+    - Mise en page du PDF inchangee : A4 portrait, marges de 12 mm, polices a taille reelle.

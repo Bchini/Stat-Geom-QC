@@ -1,0 +1,7 @@
+﻿plugin_version,qgis_version,scenario,dataset,features,profile,median_seconds,min_seconds,max_seconds,features_per_second,score,coverage_pct,total_issues,invalid,null_empty,overlap_features,overlap_pairs,expected_overlap_pairs,duplicates,repetitions_seconds
+2.9.36,3.40.5-Bratislava,clean,synthetic-clean-1000,1000,standard,0.043255,0.039749,0.046279,23118.7,100.0,70.0,0,0,0,0,0,0,0,"[0.046279,0.043255,0.039749]"
+2.9.36,3.40.5-Bratislava,controlled-overlap,synthetic-controlled-overlap-1000,1000,standard,0.042403,0.040842,0.04576,23583.2,99.9,70.0,2,0,0,2,1,1,0,"[0.04576,0.042403,0.040842]"
+2.9.36,3.40.5-Bratislava,clean,synthetic-clean-10000,10000,standard,0.525078,0.514924,0.589993,19044.8,100.0,70.0,0,0,0,0,0,0,0,"[0.589993,0.525078,0.514924]"
+2.9.36,3.40.5-Bratislava,controlled-overlap,synthetic-controlled-overlap-10000,10000,standard,0.496555,0.492341,0.548235,20138.8,99.7,70.0,38,0,0,38,19,19,0,"[0.548235,0.496555,0.492341]"
+2.9.36,3.40.5-Bratislava,clean,synthetic-clean-50000,50000,standard,2.861949,2.813249,3.076181,17470.6,100.0,70.0,0,0,0,0,0,0,0,"[3.076181,2.813249,2.861949]"
+2.9.36,3.40.5-Bratislava,controlled-overlap,synthetic-controlled-overlap-50000,50000,standard,2.946751,2.890471,3.059418,16967.8,99.7,70.0,198,0,0,198,99,99,0,"[3.059418,2.946751,2.890471]"

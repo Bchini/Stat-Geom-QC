@@ -36,7 +36,9 @@ class FlowLayout(QLayout):
         return None
 
     def expandingDirections(self):
-        return Qt.Orientations(Qt.Orientation(0))
+        # Aucune direction d'expansion. Qt.Orientation(0) est compatible
+        # PyQt5 et PyQt6 (Qt.Orientations, pluriel, n'existe plus en Qt6).
+        return Qt.Orientation(0)
 
     def hasHeightForWidth(self):
         return True
